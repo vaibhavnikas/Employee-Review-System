@@ -20,6 +20,8 @@ const adminSchema = new mongoose.Schema({
             ref: 'Review'
         }
     ]
+},{
+    timestamps: true
 });
 
 const Admin = mongoose.model('Admin', adminSchema);
