@@ -25,11 +25,11 @@ passport.use(new LocalStrategy({
         
                 if(user && user.password==password){
                     return done(null,user);
+                }else{
+                    console.log('Invalid Email/Password');
+                    return done(null,false);
                 }
-            });
-        
-            console.log('Invalid Email/Password');
-            return done(null,false);
+            });    
         }
     }); 
 }));
@@ -47,23 +47,25 @@ passport.deserializeUser(function(id, done){
             return done(err);
         }
 
-        if(user) return done(null,user);
-    });
-
-    Employee.findById(id, function(err, user){
-        if(err){
-            console.log('error in finding user ---> passport');
-            return done(err);
+        if(user){
+            return done(null,user);
+        }else{
+            Employee.findById(id, function(err, user){
+                if(err){
+                    console.log('error in finding user ---> passport');
+                    return done(err);
+                }
+        
+                if(user) return done(null,user);
+            });
         }
-
-        if(user) return done(null,user);
     });
 });
 
 
 passport.checkAuthentication = function(req, res, next){
     if(req.isAuthenticated()){
-        next();
+        return next();
     }
 
     return res.redirect('/user/sign-in');

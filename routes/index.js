@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('../config/passport-local-strategy');
 const homeController = require('../controllers/home_controller');
 
-router.get('/', homeController.home);
+router.get('/', passport.checkAuthentication,homeController.home);
 router.use('/user',require('./users'));
 
 module.exports = router;
