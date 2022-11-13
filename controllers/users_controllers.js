@@ -12,3 +12,11 @@ module.exports.signIn = function(req, res){
 module.exports.createSession = async function(req, res){
     return res.redirect('/');
 }
+
+module.exports.destroySession = async function(req, res){
+    req.logout(function(user, err){
+        if(err) return next(err);
+
+        return res.redirect('/user/sign-in');
+    });
+}
