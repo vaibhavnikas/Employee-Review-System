@@ -1,1 +1,16 @@
-<span>header</span>
+<div class="header">
+    <div class="inner_header">
+        <div class="logo_container">
+            <h1>Employee Review System</h1>
+        </div>
+
+        <ul class="navigation">
+            <%if(locals.user){%>
+                <a href="#"><li>   <%= user.name %>   </li></a>
+                <a href="/user/sign-out"><li>Sign Out</li></a>
+            <%}else{%>
+                
+            <%}%>
+        </ul>
+    </div>
+</div>
