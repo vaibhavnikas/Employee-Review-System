@@ -5,4 +5,6 @@ const adminController = require('../controllers/admin_controller');
 
 router.get('/', adminController.home);
 
+router.get('/manage-employees', adminController.manageEmployees);
+
 module.exports = router;
