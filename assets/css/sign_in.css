@@ -46,8 +46,6 @@
       color: white; }
       #form-container #main button:hover {
         opacity: 0.9; }
-      #form-container #main button:focus {
-        box-shadow: 0px 0px 0px 3px black; }
     #form-container #main h6 {
       color: #f4f4f4;
       text-align: center; }
