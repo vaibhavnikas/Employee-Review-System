@@ -15,3 +15,15 @@ module.exports.manageEmployees = async function(req, res){
         employees: employees
     })
 }
+
+module.exports.showAddEmployeeForm = function(req, res){
+    return res.render('add_employee', {
+        title: 'Add Employee | Admin'
+    })
+}
+
+module.exports.addEmployee = async function(req, res){
+    await Employee.create(req.body);
+
+    return res.redirect('/admin/manage-employees');
+}

@@ -7,4 +7,8 @@ router.get('/', adminController.home);
 
 router.get('/manage-employees', adminController.manageEmployees);
 
+router.get('/add-employee', adminController.showAddEmployeeForm);
+
+router.post('/add-employee', adminController.addEmployee);
+
 module.exports = router;
