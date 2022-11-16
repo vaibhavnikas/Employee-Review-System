@@ -1,0 +1,145 @@
+#button-container{
+    width: 60vw;
+    margin: auto;
+    position: relative;
+    top: 5vh;
+    left: 1vw;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    a{
+        font-size: 24px;
+        text-decoration: none;
+        color: #fff;
+        padding: 10px 20px;
+        height: 3vh;
+        width: 5vw;
+        background-color: #f57f44;
+        border-radius: 5px;
+
+        &:hover{
+            border: 1px solid #0a2541;
+            background-color: #f58c58;
+            box-sizing: border-box;
+        }
+    }
+}
+
+.wrapper{
+    width: 50vw;
+    position: relative;
+    left: 20vw;
+    top: 10vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    ul{
+        display: inline-flex;
+        padding: 0;
+        margin: 0;
+        box-shadow: 0px 10px 20px rgba(0,0,0,0.30);
+
+        li{
+            list-style: none;
+
+            input{
+                filter: blur(100px);
+                display: none;
+            }
+
+            label{
+                background-color: #134a85;
+                color: #fff;
+                width: 30vw;
+                height: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 20px;
+                cursor: pointer;
+                font-weight: 600;
+            }
+
+            input[id^="tab"]:checked + label{
+                background-color: #fff;
+                color: #0a2541;
+            }
+
+            .tab_content{
+                background-color: #fff;
+                position: absolute;
+                left: 0;
+                top: 50px;
+                box-shadow: 0px 10px 20px rgba(0,0,0,0.30);
+                display: none;
+
+                #review-list{
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    overflow: auto;
+                    margin-top: 20px;
+                    width: 60vw;
+                    padding: 25px;
+                    box-sizing: border-box;
+            
+                    table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin: auto;
+            
+                        th,td{
+                            padding: 10px 20px;
+                            font-size: 14px;
+                            text-align: center;
+            
+                            a{
+                                border: none;
+                                padding: 7px 20px;
+                                border-radius: 5px;
+                                background-color: #f83636;
+                                color: #e6e7e8;
+                                text-decoration: none;
+                            }
+            
+                            #edit{
+                                background-color: #45b405;
+                                color: #0a2541;
+                            }
+                        }
+            
+                        tr{
+            
+                            &:hover td{
+                                color: white;
+                                cursor: pointer;
+                                background-color: #184e77;
+                            }
+                        }
+            
+                        thead{
+                            th{
+                                position: sticky;
+                                top: 0;
+                                background-color: #0a2541;
+                                color: #e6e7e8;
+                                font-size: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            input[id^="tab"]:checked ~ .tab_content{
+                display: inline-block;   
+            }
+
+            .tab_content h1{
+                margin: 0;
+                font-size: 32px;
+            }
+
+            .tab_content p{
+                font-size: 17px;
+                margin: 0;
+                text-align: justify;
+            }
+        }
+    }
+}

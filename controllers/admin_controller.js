@@ -54,3 +54,9 @@ module.exports.updateEmployeeDetails = function(req, res){
 
     return res.redirect('/admin/manage-employees');
 }
+
+module.exports.manageReviews = function(req, res){
+    return res.render('manage_reviews',{
+        title: 'Manage Reviews | Admin'
+    });
+}
