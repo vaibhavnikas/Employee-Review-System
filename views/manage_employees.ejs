@@ -1,1 +1,37 @@
-<h1>Manage Employees</h1>
+<link rel="stylesheet" href="/css/manage_employees.css">
+
+<div id="main-container">
+    <div id="header">
+        <span>All Employees</span>
+        <a href="/admin/add-employee">Add New</a>
+    </div>
+
+    <div id="employees-list">
+        <table>
+            <thead>
+                <tr>
+                    <th>S No.</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Designation</th>
+                    <th>Action</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%for(let i=0;i<employees.length;i++){%>
+                    <tr>
+                        <td><%= (i+1) %></td>
+                        <td><%= employees[i].name %></td>
+                        <td><%= employees[i].email %></td>
+                        <td><%= employees[i].department %></td>
+                        <td><%= employees[i].designation %></td>
+                        <td><a href="" id="edit">Edit</a></td>
+                        <td><a href="">Delete</a></td>
+                    </tr>
+                <%}%>
+            </tbody>
+        </table>    
+    </div>
+</div>

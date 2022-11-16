@@ -1,0 +1,78 @@
+#main-container{
+    background-color: rgb(247,247,247);
+    color: black;
+    min-height: 100%;
+
+    #header{
+        width: 80%;
+        margin: auto;
+        padding: 20px 0px;
+
+        span{
+            font-size: 24px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-left: 40px;
+        }
+
+        a{
+            text-decoration: none;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 10px 20px;
+            background-color: #f57f44;
+            margin-left: 50px;
+            border-radius: 5px;
+        }
+    }
+
+    #employees-list{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        min-height: 100vh;
+        overflow: auto;
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: auto;
+
+            th,td{
+                padding: 10px 20px;
+                font-size: 14px;
+                text-align: center;
+
+                a{
+                    border: none;
+                    padding: 7px 20px;
+                    border-radius: 5px;
+                    background-color: #f83636;
+                    color: #e6e7e8;
+                    text-decoration: none;
+                }
+
+                #edit{
+                    background-color: #45b405;
+                    color: #0a2541;
+                }
+            }
+
+            tr{
+
+                &:hover td{
+                    color: white;
+                    cursor: pointer;
+                    background-color: #184e77;
+                }
+            }
+
+            thead{
+                th{
+                    position: sticky;
+                    top: 0;
+                    background-color: #0a2541;
+                    color: #e6e7e8;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}
