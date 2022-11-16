@@ -27,3 +27,9 @@ module.exports.addEmployee = async function(req, res){
 
     return res.redirect('/admin/manage-employees');
 }
+
+module.exports.deleteEmployee = async function(req, res){
+    await Employee.findByIdAndDelete(req.params.id);
+
+    return res.redirect('back');
+}

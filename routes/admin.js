@@ -11,4 +11,6 @@ router.get('/add-employee', adminController.showAddEmployeeForm);
 
 router.post('/add-employee', adminController.addEmployee);
 
+router.get('/delete-employee/:id', adminController.deleteEmployee);
+
 module.exports = router;
