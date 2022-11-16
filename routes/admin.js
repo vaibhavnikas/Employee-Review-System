@@ -19,4 +19,6 @@ router.post('/update-employee/:id', adminController.updateEmployeeDetails);
 
 router.get('/manage-reviews', adminController.manageReviews);
 
+router.post('/assign-review', adminController.assignReview);
+
 module.exports = router;

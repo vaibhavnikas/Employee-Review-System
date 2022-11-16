@@ -1,7 +1,23 @@
 <link rel="stylesheet" href="/css/manage_reviews.css">
 
-<div id="button-container">
-    <a href="/admin/assign-review">Assign Review</a>
+<div id="assign-review-form-container">
+    <form action="/admin/assign-review" method="POST">
+        <select name="from_employee" id="from_employee" required> 
+            <option value="" selected disabled hidden>Review from employee</option>
+            <%for(employee of employees){%>
+                <option value="<%=employee.id%>"><%= employee.name %></option>
+            <%}%>
+        </select>
+
+        <select name="to_employee" id="to_employee" required>
+            <option value="" selected disabled hidden>Review to employee</option>
+            <%for(employee of employees){%>
+                <option value="<%=employee.id%>"><%= employee.name %></option>
+            <%}%>
+        </select>
+
+        <button type="submit">Assign Review</button>
+    </form>
 </div>
 
 <div class="wrapper">
@@ -49,6 +65,7 @@
                                 <th>Review To Employee</th>
                                 <th>Rating</th>
                                 <th>Feedback</th>
+                                <th>#</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,6 +75,7 @@
                                     <td>Tony Stark</td>
                                     <td>4/5</td>
                                     <td>Hardworking and Ambitious</td>
+                                    <td><a href="">Update</a></td>
                                 </tr>
                         </tbody>
                     </table>    

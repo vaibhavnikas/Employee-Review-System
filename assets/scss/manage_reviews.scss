@@ -1,25 +1,33 @@
-#button-container{
-    width: 60vw;
-    margin: auto;
+#assign-review-form-container{
     position: relative;
     top: 5vh;
-    left: 1vw;
+    left: 20vw;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: max-content;
+    
+    select{
+        height: 5vh;
+        width: 12vw;
+        background-color: #eee;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        font-size: 1.8vh;
+        padding: 2px 5px;
+    }
 
-    a{
-        font-size: 24px;
-        text-decoration: none;
-        color: #fff;
-        padding: 10px 20px;
-        height: 3vh;
-        width: 5vw;
-        background-color: #f57f44;
+    button{
+        height: 5vh;
+        width: 8vw;
+        background-color: coral;
+        border: none;
         border-radius: 5px;
+        font-size: 16px;
+        color: #fff;
+        cursor: pointer;
 
         &:hover{
+            background-color: rgb(250, 113, 64);
             border: 1px solid #0a2541;
-            background-color: #f58c58;
-            box-sizing: border-box;
         }
     }
 }

@@ -1,4 +1,5 @@
 const Employee = require('../models/employee');
+const Review = require('../models/review');
 
 module.exports.home = function(req, res){
     return res.render('admin_view',{
@@ -55,8 +56,36 @@ module.exports.updateEmployeeDetails = function(req, res){
     return res.redirect('/admin/manage-employees');
 }
 
-module.exports.manageReviews = function(req, res){
+module.exports.manageReviews = async function(req, res){
+    const employees = await Employee.find(); 
+
     return res.render('manage_reviews',{
-        title: 'Manage Reviews | Admin'
+        title: 'Manage Reviews | Admin',
+        employees: employees
     });
+}
+
+module.exports.assignReview = async function(req, res){
+    let employee1 = await Employee.findById(req.body.from_employee);
+    let employee2 = await Employee.findById(req.body.to_employee);
+
+    const review = await Review.create({
+        from_employee: employee1._id,
+        to_employee: employee2._id,
+        status: 'pending',
+        rating: 0,
+        feedback: '-'
+    });
+
+    if(employee1){
+        employee1.assigned_reviews.push(review);
+        employee1.save();
+    }
+
+    if(employee2){
+        employee2.assigned_reviews.push(review);
+        employee2.save();
+    }
+
+    return res.redirect('back');
 }
