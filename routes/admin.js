@@ -7,10 +7,14 @@ router.get('/', adminController.home);
 
 router.get('/manage-employees', adminController.manageEmployees);
 
-router.get('/add-employee', adminController.showAddEmployeeForm);
+router.get('/add-employee', adminController.displayAddEmployeeForm);
 
 router.post('/add-employee', adminController.addEmployee);
 
 router.get('/delete-employee/:id', adminController.deleteEmployee);
+
+router.get('/update-employee-details/:id', adminController.displayUpdateEmployeeForm);
+
+router.post('/update-employee/:id', adminController.updateEmployeeDetails);
 
 module.exports = router;

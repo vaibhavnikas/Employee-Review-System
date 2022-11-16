@@ -27,7 +27,7 @@
                         <td><%= employees[i].email %></td>
                         <td><%= employees[i].department %></td>
                         <td><%= employees[i].designation %></td>
-                        <td><a href="" id="edit">Edit</a></td>
+                        <td><a href="/admin/update-employee-details/<%=employees[i].id%>" id="edit">Edit</a></td>
                         <td><a href="/admin/delete-employee/<%=employees[i].id%>">Delete</a></td>
                     </tr>
                 <%}%>
