@@ -58,10 +58,15 @@ module.exports.updateEmployeeDetails = function(req, res){
 
 module.exports.manageReviews = async function(req, res){
     const employees = await Employee.find(); 
+    const reviews = await Review.find()
+    .populate({
+        path: 'from_employee to_employee',
+    });
 
     return res.render('manage_reviews',{
         title: 'Manage Reviews | Admin',
-        employees: employees
+        employees: employees,
+        reviews: reviews
     });
 }
 

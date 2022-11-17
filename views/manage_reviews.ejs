@@ -39,14 +39,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Jon Snow</td>
-                                    <td>Tony Stark</td>
-                                    <td>4/5</td>
-                                    <td>Hardworking and Ambitious</td>
-                                    <td><a href="">Update</a></td>
-                                </tr>
+                                <%for(let i=0;i<reviews.length;i++){%>
+                                    <%if(reviews[i].status == 'pending'){%>
+                                        <tr>
+                                            <td><%=(i+1)%></td>
+                                            <td><%=reviews[i].from_employee.name%></td>
+                                            <td><%=reviews[i].to_employee.name%></td>
+                                            <td><%=reviews[i].rating%></td>
+                                            <td><%=reviews[i].feedback%></td>
+                                            <td><a href="/admin/update-review/<%= reviews[i].id %>">Update</a></td>
+                                        </tr>
+                                    <%}%>    
+                                <%}%>
                         </tbody>
                     </table>    
                 </div>
@@ -69,14 +73,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Jon Snow</td>
-                                    <td>Tony Stark</td>
-                                    <td>4/5</td>
-                                    <td>Hardworking and Ambitious</td>
-                                    <td><a href="">Update</a></td>
-                                </tr>
+                            <%for(let i=0;i<reviews.length;i++){%>
+                                <%if(reviews[i].status == 'completed'){%>
+                                    <tr>
+                                        <td><%=(i+1)%></td>
+                                        <td><%=reviews[i].from_employee.name%></td>
+                                        <td><%=reviews[i].to_employee.name%></td>
+                                        <td><%=reviews[i].rating%></td>
+                                        <td><%=reviews[i].feedback%></td>
+                                        <td><a href="/admin/update-review/<%= reviews[i].id %>">Update</a></td>
+                                    </tr>
+                                <%}%>    
+                            <%}%>
                         </tbody>
                     </table>    
                 </div>
