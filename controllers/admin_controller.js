@@ -24,7 +24,15 @@ module.exports.displayAddEmployeeForm = function(req, res){
 }
 
 module.exports.addEmployee = async function(req, res){
-    await Employee.create(req.body);
+    const employee = await Employee.findOne({
+        email: req.body.email
+    });
+
+    if(!employee){
+        await Employee.create(req.body);
+    }else{
+        console.log('Employee with the same email already exists');
+    }
 
     return res.redirect('/admin/manage-employees');
 }
@@ -74,7 +82,7 @@ module.exports.assignReview = async function(req, res){
     let employee1 = await Employee.findById(req.body.from_employee);
     let employee2 = await Employee.findById(req.body.to_employee);
 
-    const review = Review.find({
+    const review = await Review.findOne({
         from_employee: employee1._id,
         to_employee: employee2._id
     });
@@ -98,7 +106,7 @@ module.exports.assignReview = async function(req, res){
             employee2.save();
         }
     }else{
-        console.log(employee1.name, 'has already reviewed', employee2.name);
+        console.log(employee1.name, 'has already been assigned the task to review', employee2.name);
     }
 
     return res.redirect('back');
@@ -120,10 +128,14 @@ module.exports.displayUpdateReviewForm = async function(req, res){
 module.exports.updateReview = async function(req, res){
     const review = await Review.findById(req.params.id);
 
-    review.status = 'completed';
-    review.rating = req.body.rating;
-    review.feedback = req.body.feedback;
-    review.save();
+    if(review){
+        review.status = 'completed';
+        review.rating = req.body.rating;
+        review.feedback = req.body.feedback;
+        review.save();
+    }else{
+        console.log("review you are trying to update doesn't exist");
+    }
 
     return res.redirect('/admin/manage-reviews');
 }

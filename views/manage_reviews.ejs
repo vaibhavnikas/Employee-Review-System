@@ -79,7 +79,7 @@
                                         <td><%=counter%></td> <%counter++%>
                                         <td><%=reviews[i].from_employee.name%></td>
                                         <td><%=reviews[i].to_employee.name%></td>
-                                        <td><%=reviews[i].rating%></td>
+                                        <td><%=reviews[i].rating%>/5</td>
                                         <td><%=reviews[i].feedback%></td>
                                         <td><a href="/admin/update-review/<%= reviews[i].id %>">Update</a></td>
                                     </tr>
