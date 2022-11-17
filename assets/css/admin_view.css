@@ -25,10 +25,14 @@
       #main-container #inner-container .button:hover {
         border: 1px solid #041835;
         background-color: #f58c58; }
-      #main-container #inner-container .button span {
+      #main-container #inner-container .button a {
+        text-decoration: none;
+        color: #041835;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-size: 25px;
-        text-align: center; }
-        #main-container #inner-container .button span a {
-          text-decoration: none;
-          color: #041835; }
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%; }
