@@ -10,7 +10,11 @@ module.exports.signIn = function(req, res){
 }
 
 module.exports.createSession = async function(req, res){
-    return res.redirect('/');
+    if(req.user.designation){
+        return res.redirect('/employee');
+    }else{
+        return res.redirect('/admin');
+    }
 }
 
 module.exports.destroySession = async function(req, res){
