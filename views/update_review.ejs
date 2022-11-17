@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="/css/update_review.css">
+
+<div id="update-review-container">
+    &nbsp;
+    <form action="/admin/update-review/<%=review.id%>" id="main" method="POST">
+        <h2>Update Review</h2>
+
+        <div class="input-parent">
+            <label for="from_employee">Review From Employee</label>
+            <input type="text" name="from_employee" id="from_employee" value="<%=review.from_employee.name%>" disabled required>
+        </div>
+
+        <div class="input-parent">
+            <label for="to_employee">Review To Employee</label>
+            <input type="text" name="to_employee" id="to_employee" value="<%=review.to_employee.name%>" disabled required>
+        </div>
+
+        <div class="input-parent">
+            <label for="rating">Rating</label>
+            <input type="number" name="rating" id="rating" min="0" max="5" value="<%=review.rating%>" required>
+        </div>
+        
+        <div class="input-parent">
+            <label for="feedback">Feedback</label>
+            <input type="text" name="feedback" id="feedback" value="<%=review.feedback%>" required>
+        </div>
+
+        <button type="submit">Update</button>
+    </form>
+</div>

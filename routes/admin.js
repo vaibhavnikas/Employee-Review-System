@@ -21,4 +21,8 @@ router.get('/manage-reviews', adminController.manageReviews);
 
 router.post('/assign-review', adminController.assignReview);
 
+router.get('/update-review/:id', adminController.displayUpdateReviewForm);
+
+router.post('/update-review/:id', adminController.updateReview);
+
 module.exports = router;

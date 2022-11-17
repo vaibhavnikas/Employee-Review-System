@@ -39,10 +39,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                                <%for(let i=0;i<reviews.length;i++){%>
+                                <%for(let i=0,counter = 1;i<reviews.length;i++){%>
                                     <%if(reviews[i].status == 'pending'){%>
                                         <tr>
-                                            <td><%=(i+1)%></td>
+                                            <td><%=counter%></td> <%counter++%>
                                             <td><%=reviews[i].from_employee.name%></td>
                                             <td><%=reviews[i].to_employee.name%></td>
                                             <td><%=reviews[i].rating%></td>
@@ -73,10 +73,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <%for(let i=0;i<reviews.length;i++){%>
+                            <%for(let i=0,counter = 1;i<reviews.length;i++){%>
                                 <%if(reviews[i].status == 'completed'){%>
                                     <tr>
-                                        <td><%=(i+1)%></td>
+                                        <td><%=counter%></td> <%counter++%>
                                         <td><%=reviews[i].from_employee.name%></td>
                                         <td><%=reviews[i].to_employee.name%></td>
                                         <td><%=reviews[i].rating%></td>

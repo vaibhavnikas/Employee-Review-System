@@ -74,23 +74,56 @@ module.exports.assignReview = async function(req, res){
     let employee1 = await Employee.findById(req.body.from_employee);
     let employee2 = await Employee.findById(req.body.to_employee);
 
-    const review = await Review.create({
+    const review = Review.find({
         from_employee: employee1._id,
-        to_employee: employee2._id,
-        status: 'pending',
-        rating: 0,
-        feedback: '-'
+        to_employee: employee2._id
     });
 
-    if(employee1){
-        employee1.assigned_reviews.push(review);
-        employee1.save();
-    }
-
-    if(employee2){
-        employee2.assigned_reviews.push(review);
-        employee2.save();
+    if(!review){
+        const review = await Review.create({
+            from_employee: employee1._id,
+            to_employee: employee2._id,
+            status: 'pending',
+            rating: 0,
+            feedback: '-'
+        });
+    
+        if(employee1){
+            employee1.assigned_reviews.push(review);
+            employee1.save();
+        }
+    
+        if(employee2){
+            employee2.assigned_reviews.push(review);
+            employee2.save();
+        }
+    }else{
+        console.log(employee1.name, 'has already reviewed', employee2.name);
     }
 
     return res.redirect('back');
+}
+
+module.exports.displayUpdateReviewForm = async function(req, res){
+    
+    const review = await Review.findById(req.params.id)
+    .populate({
+        path: 'from_employee to_employee',
+    });
+
+    return res.render('update_review',{
+        title: 'Update Review | Admin',
+        review: review
+    });
+}
+
+module.exports.updateReview = async function(req, res){
+    const review = await Review.findById(req.params.id);
+
+    review.status = 'completed';
+    review.rating = req.body.rating;
+    review.feedback = req.body.feedback;
+    review.save();
+
+    return res.redirect('/admin/manage-reviews');
 }
