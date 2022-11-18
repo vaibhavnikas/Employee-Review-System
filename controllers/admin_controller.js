@@ -137,5 +137,9 @@ module.exports.updateReview = async function(req, res){
         console.log("review you are trying to update doesn't exist");
     }
 
-    return res.redirect('/admin/manage-reviews');
+    if(req.user.designation){
+        return res.redirect('/employee');
+    }else{
+        return res.redirect('/admin/manage-reviews');
+    }
 }
