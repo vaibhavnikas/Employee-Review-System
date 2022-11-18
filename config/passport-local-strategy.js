@@ -6,11 +6,12 @@ const Admin = require('../models/admin');
 const Employee = require('../models/employee');
 
 passport.use(new LocalStrategy({
-    usernameField: 'email'
-},function(email, password, done){
+    usernameField: 'email',
+    passReqToCallback: true
+},function(req, email, password, done){
     Admin.findOne({email : email}, function(err,user){
         if(err){
-            console.log('Error in finding user ---> passport');
+            req.flash('error', 'Error in finding user ---> passport');
             return done(err);
         }
 
@@ -19,14 +20,14 @@ passport.use(new LocalStrategy({
         }else{
             Employee.findOne({email : email}, function(err,user){
                 if(err){
-                    console.log('Error in finding user ---> passport');
+                    req.flash('error', 'Error in finding user ---> passport');
                     return done(err);
                 }
         
                 if(user && user.password==password){
                     return done(null,user);
                 }else{
-                    console.log('Invalid Email/Password');
+                    req.flash('error', 'Invalid Email/Password');
                     return done(null,false);
                 }
             });    

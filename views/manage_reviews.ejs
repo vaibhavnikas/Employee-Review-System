@@ -1,94 +1,96 @@
 <link rel="stylesheet" href="/css/manage_reviews.css">
 
-<div id="assign-review-form-container">
-    <form action="/admin/assign-review" method="POST">
-        <select name="from_employee" id="from_employee" required> 
-            <option value="" selected disabled hidden>Review from employee</option>
-            <%for(employee of employees){%>
-                <option value="<%=employee.id%>"><%= employee.name %></option>
-            <%}%>
-        </select>
-
-        <select name="to_employee" id="to_employee" required>
-            <option value="" selected disabled hidden>Review to employee</option>
-            <%for(employee of employees){%>
-                <option value="<%=employee.id%>"><%= employee.name %></option>
-            <%}%>
-        </select>
-
-        <button type="submit">Assign Review</button>
-    </form>
-</div>
-
-<div class="wrapper">
-    <ul>
-        <li>
-            <input type="radio" id="tab1" name="tab" checked>
-            <label for="tab1">Pending Reviews</label>
-            <div class="tab_content">
-                <div id="review-list">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>S No.</th>
-                                <th>Review From Employee</th>
-                                <th>Review To Employee</th>
-                                <th>Rating</th>
-                                <th>Feedback</th>
-                                <th>#</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+<div id="manage-review-container">
+    <div id="assign-review-form-container">
+        <form action="/admin/assign-review" method="POST">
+            <select name="from_employee" id="from_employee" required> 
+                <option value="" selected disabled hidden>Review from employee</option>
+                <%for(employee of employees){%>
+                    <option value="<%=employee.id%>"><%= employee.name %></option>
+                <%}%>
+            </select>
+    
+            <select name="to_employee" id="to_employee" required>
+                <option value="" selected disabled hidden>Review to employee</option>
+                <%for(employee of employees){%>
+                    <option value="<%=employee.id%>"><%= employee.name %></option>
+                <%}%>
+            </select>
+    
+            <button type="submit">Assign Review</button>
+        </form>
+    </div>
+    
+    <div class="wrapper">
+        <ul>
+            <li>
+                <input type="radio" id="tab1" name="tab" checked>
+                <label for="tab1">Pending Reviews</label>
+                <div class="tab_content">
+                    <div id="review-list">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>S No.</th>
+                                    <th>Review From Employee</th>
+                                    <th>Review To Employee</th>
+                                    <th>Rating</th>
+                                    <th>Feedback</th>
+                                    <th>#</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    <%for(let i=0,counter = 1;i<reviews.length;i++){%>
+                                        <%if(reviews[i].status == 'pending'){%>
+                                            <tr>
+                                                <td><%=counter%></td> <%counter++%>
+                                                <td><%=reviews[i].from_employee.name%></td>
+                                                <td><%=reviews[i].to_employee.name%></td>
+                                                <td><%=reviews[i].rating%></td>
+                                                <td><%=reviews[i].feedback%></td>
+                                                <td><a href="/admin/update-review/<%= reviews[i].id %>">Update</a></td>
+                                            </tr>
+                                        <%}%>    
+                                    <%}%>
+                            </tbody>
+                        </table>    
+                    </div>
+                </div>
+            </li>
+            <li>
+                <input type="radio" id="tab2" name="tab">
+                <label for="tab2">Completed Reviews</label>
+                <div class="tab_content">
+                    <div id="review-list">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>S No.</th>
+                                    <th>Review From Employee</th>
+                                    <th>Review To Employee</th>
+                                    <th>Rating</th>
+                                    <th>Feedback</th>
+                                    <th>#</th>
+                                </tr>
+                            </thead>
+                            <tbody>
                                 <%for(let i=0,counter = 1;i<reviews.length;i++){%>
-                                    <%if(reviews[i].status == 'pending'){%>
+                                    <%if(reviews[i].status == 'completed'){%>
                                         <tr>
                                             <td><%=counter%></td> <%counter++%>
                                             <td><%=reviews[i].from_employee.name%></td>
                                             <td><%=reviews[i].to_employee.name%></td>
-                                            <td><%=reviews[i].rating%></td>
+                                            <td><%=reviews[i].rating%>/5</td>
                                             <td><%=reviews[i].feedback%></td>
                                             <td><a href="/admin/update-review/<%= reviews[i].id %>">Update</a></td>
                                         </tr>
                                     <%}%>    
                                 <%}%>
-                        </tbody>
-                    </table>    
+                            </tbody>
+                        </table>    
+                    </div>
                 </div>
-            </div>
-        </li>
-        <li>
-            <input type="radio" id="tab2" name="tab">
-            <label for="tab2">Completed Reviews</label>
-            <div class="tab_content">
-                <div id="review-list">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>S No.</th>
-                                <th>Review From Employee</th>
-                                <th>Review To Employee</th>
-                                <th>Rating</th>
-                                <th>Feedback</th>
-                                <th>#</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <%for(let i=0,counter = 1;i<reviews.length;i++){%>
-                                <%if(reviews[i].status == 'completed'){%>
-                                    <tr>
-                                        <td><%=counter%></td> <%counter++%>
-                                        <td><%=reviews[i].from_employee.name%></td>
-                                        <td><%=reviews[i].to_employee.name%></td>
-                                        <td><%=reviews[i].rating%>/5</td>
-                                        <td><%=reviews[i].feedback%></td>
-                                        <td><a href="/admin/update-review/<%= reviews[i].id %>">Update</a></td>
-                                    </tr>
-                                <%}%>    
-                            <%}%>
-                        </tbody>
-                    </table>    
-                </div>
-            </div>
-        </li>
-    </ul>
+            </li>
+        </ul>
+    </div>
 </div>

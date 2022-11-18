@@ -32,7 +32,7 @@ module.exports.displayUpdateReviewForm = async function(req, res){
     });
 
     return res.render('update_review',{
-        title: 'Update Review | Admin',
+        title: 'Update Review',
         review: review
     });
 }

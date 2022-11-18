@@ -2,6 +2,7 @@
     background-color: rgb(247,247,247);
     color: black;
     min-height: 100%;
+    margin-bottom: 10vh;
 
     #header{
         width: 80%;
@@ -22,6 +23,11 @@
             background-color: #f57f44;
             margin-left: 50px;
             border-radius: 5px;
+
+            &:hover{
+                background-color: #f36e2c;
+                border: 1px solid #0a2541;
+            }
         }
     }
 

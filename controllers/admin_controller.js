@@ -25,12 +25,13 @@ module.exports.displayAddEmployeeForm = function(req, res){
 }
 
 module.exports.addEmployee = async function(req, res){
-    const employee = await Employee.findOne({
+    let employee = await Employee.findOne({
         email: req.body.email
     });
 
     if(!employee){
-        await Employee.create(req.body);
+        employee = await Employee.create(req.body);
+        if(employee) req.flash('success', 'Employee added successfully !');
     }else{
         console.log('Employee with the same email already exists');
     }
@@ -39,7 +40,8 @@ module.exports.addEmployee = async function(req, res){
 }
 
 module.exports.deleteEmployee = async function(req, res){
-    await Employee.findByIdAndDelete(req.params.id);
+    const employee = await Employee.findByIdAndDelete(req.params.id);
+    if(employee) req.flash('success', 'Employee deleted successfully !');
 
     return res.redirect('back');
 }
@@ -53,14 +55,9 @@ module.exports.displayUpdateEmployeeForm = async function(req, res){
     });
 }
 
-module.exports.updateEmployeeDetails = function(req, res){
-    Employee.findByIdAndUpdate(req.params.id, req.body, function(err, employee){
-        if(err){
-            console.log('error in updating employee details : ', err);
-        }else{
-            console.log('employee details updated : ', employee);
-        }
-    });
+module.exports.updateEmployeeDetails = async function(req, res){
+    const employee = await Employee.findByIdAndUpdate(req.params.id, req.body);
+    if(employee) req.flash('success', 'Employee details updated successfully !');
 
     return res.redirect('/admin/manage-employees');
 }
@@ -105,9 +102,11 @@ module.exports.assignReview = async function(req, res){
         if(employee2){
             employee2.assigned_reviews.push(review);
             employee2.save();
+            req.flash('success', 'Review assigned successfully !');
         }
     }else{
-        console.log(employee1.name, 'has already been assigned the task to review', employee2.name);
+        let message = employee1.name + ' has already been assigned the task to review ' + employee2.name;
+        req.flash('success', message);
     }
 
     return res.redirect('back');
@@ -134,8 +133,9 @@ module.exports.updateReview = async function(req, res){
         review.rating = req.body.rating;
         review.feedback = req.body.feedback;
         review.save();
+        req.flash('success', 'Review updated successfully !');
     }else{
-        console.log("review you are trying to update doesn't exist");
+        req.flash('error', "review you are trying to update doesn't exist");
     }
 
     if(req.user.designation){
@@ -148,16 +148,19 @@ module.exports.updateReview = async function(req, res){
 module.exports.makeAdmin = async function(req, res){
     const employee = await Employee.findById(req.params.id);
 
-    const admin = await Admin.findOne({email: employee.email});
+    let admin = await Admin.findOne({email: employee.email});
 
     if(!admin){
-        await Admin.create({
+        admin = await Admin.create({
             name: employee.name,
             email: employee.email,
             password: employee.password
         });
+        const message = employee.name + ' is now an admin !';
+        if(admin) req.flash('success', message);
     }else{
-        console.log('Employee is already an admin');
+        const message = employee.name + ' is already an admin !';
+        req.flash('error', message);
     }
 
     return res.redirect('back');

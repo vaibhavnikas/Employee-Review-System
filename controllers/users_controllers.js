@@ -12,6 +12,7 @@ module.exports.signIn = function(req, res){
 }
 
 module.exports.createSession = async function(req, res){
+    req.flash('success', 'Logged In Successfully');
     if(req.user.designation){
         return res.redirect('/employee');
     }else{
@@ -23,6 +24,7 @@ module.exports.destroySession = async function(req, res){
     req.logout(function(user, err){
         if(err) return next(err);
 
+        req.flash('success', 'You have been logged out');
         return res.redirect('/user/sign-in');
     });
 }
