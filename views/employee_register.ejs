@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="/css/employee_register.css">
+
+<div id="register-form-container">
+    &nbsp;
+    <form action="/user/register" id="main" method="POST">
+        <h2>Register as an Employee</h2>
+
+        <div class="input-parent">
+            <label for="name">Name</label>
+            <input type="text" name="name" placeholder="Name" id="name" required>
+        </div>
+
+        <div class="input-parent">
+            <label for="email">Email</label>
+            <input type="email" name="email" placeholder="Email" id="email" required>
+        </div>
+
+        <div class="input-parent">
+            <label for="password">Password</label>
+            <input type="password" name="password" placeholder="Password" id="password" required>
+        </div>
+
+        <div class="input-parent">
+            <label for="department">Department</label>
+            <input type="text" name="department" placeholder="Department" id="department" required>
+        </div>
+
+        <div class="input-parent">
+            <label for="designation">Designation</label>
+            <input type="text" name="designation" placeholder="Designation" id="designation" required>
+        </div>
+        
+        <button type="submit">Register</button>
+    </form>
+</div>

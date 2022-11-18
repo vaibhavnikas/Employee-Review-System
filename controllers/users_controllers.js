@@ -1,4 +1,6 @@
 const Admin = require('../models/admin');
+const Employee = require('../models/employee');
+
 module.exports.signIn = function(req, res){
     if(req.isAuthenticated()){
         return res.redirect('back');
@@ -23,4 +25,20 @@ module.exports.destroySession = async function(req, res){
 
         return res.redirect('/user/sign-in');
     });
+}
+
+module.exports.displayRegistrationForm = function(req, res){
+    if(req.isAuthenticated()){
+        return res.redirect('back');
+    }
+
+    return res.render('employee_register',{
+        title: 'Register'
+    });
+}
+
+module.exports.register = async function(req, res){
+    await Employee.create(req.body);
+
+    return res.redirect('/user/sign-in');
 }

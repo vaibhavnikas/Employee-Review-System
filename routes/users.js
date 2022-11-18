@@ -5,6 +5,10 @@ const usersController = require('../controllers/users_controllers');
 
 router.get('/sign-in', usersController.signIn);
 
+router.get('/register', usersController.displayRegistrationForm);
+
+router.post('/register', usersController.register);
+
 router.post('/create-session', passport.authenticate(
     'local',
     {failureRedirect : '/user/sign-in'}
