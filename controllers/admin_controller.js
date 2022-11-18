@@ -1,3 +1,4 @@
+const Admin = require('../models/admin');
 const Employee = require('../models/employee');
 const Review = require('../models/review');
 
@@ -142,4 +143,22 @@ module.exports.updateReview = async function(req, res){
     }else{
         return res.redirect('/admin/manage-reviews');
     }
+}
+
+module.exports.makeAdmin = async function(req, res){
+    const employee = await Employee.findById(req.params.id);
+
+    const admin = await Admin.findOne({email: employee.email});
+
+    if(!admin){
+        await Admin.create({
+            name: employee.name,
+            email: employee.email,
+            password: employee.password
+        });
+    }else{
+        console.log('Employee is already an admin');
+    }
+
+    return res.redirect('back');
 }

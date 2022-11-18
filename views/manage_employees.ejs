@@ -17,6 +17,7 @@
                     <th>Designation</th>
                     <th>Action</th>
                     <th>Action</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +30,7 @@
                         <td><%= employees[i].designation %></td>
                         <td><a href="/admin/update-employee-details/<%=employees[i].id%>" id="edit">Edit</a></td>
                         <td><a href="/admin/delete-employee/<%=employees[i].id%>">Delete</a></td>
+                        <td><a href="/admin/make-admin/<%=employees[i].id%>" id="make-admin">Make Admin</a></td>
                     </tr>
                 <%}%>
             </tbody>

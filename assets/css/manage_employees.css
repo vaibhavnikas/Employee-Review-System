@@ -39,7 +39,10 @@
           text-decoration: none; }
         #main-container #employees-list table th #edit, #main-container #employees-list table td #edit {
           background-color: #45b405;
-          color: #0a2541; }
+          color: white; }
+        #main-container #employees-list table th #make-admin, #main-container #employees-list table td #make-admin {
+          background-color: dodgerblue;
+          color: white; }
       #main-container #employees-list table tr:hover td {
         color: white;
         cursor: pointer;
