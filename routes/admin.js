@@ -23,8 +23,6 @@ router.post('/assign-review', adminController.assignReview);
 
 router.get('/update-review/:id', adminController.displayUpdateReviewForm);
 
-router.post('/update-review/:id', adminController.updateReview);
-
 router.get('/make-admin/:id', adminController.makeAdmin);
 
 module.exports = router;

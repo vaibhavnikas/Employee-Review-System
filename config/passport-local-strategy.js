@@ -71,6 +71,21 @@ passport.checkAuthentication = function(req, res, next){
     return res.redirect('/user/sign-in');
 }
 
+passport.checkEmployeeAuthorization = function(req, res, next){
+    if(req.user.designation){
+        next();
+    }else{
+        return res.redirect('back');
+    }
+}
+
+passport.checkAdminAuthorization = function(req, res, next){
+    if(!req.user.designation){
+        next();
+    }else{
+        return res.redirect('back');
+    }
+}
 
 passport.setAuthenticatedUser = function(req, res, next){
     if(req.isAuthenticated()){
