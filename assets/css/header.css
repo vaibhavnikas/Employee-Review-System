@@ -20,6 +20,9 @@
         font-family: Montserrat,Arial, Helvetica, sans-serif;
         font-size: 20px;
         font-weight: 200; }
+      .header .inner_header .logo_container a {
+        text-decoration: none;
+        color: white; }
     .header .inner_header .navigation {
       margin-top: 0px;
       float: right;
