@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const env = require('./environment');
 
-const mongodb_url = 'mongodb://localhost/employee-review-system-development';
+const mongodb_url =  env.mongodb_url || `mongodb://localhost/${env.db}`;
 
 mongoose.connect(mongodb_url, {
     family: 4

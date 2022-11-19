@@ -1,4 +1,5 @@
 const express = require('express');
+const env = require('./config/environment');
 const app = express();
 const port = 8000;
 const cookieParser = require('cookie-parser');
@@ -10,10 +11,11 @@ const MongoStore = require('connect-mongo');
 const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');
 const customMiddleware = require('./config/middleware');
+const path = require('path');
 
 app.use(sassMiddleware({
-    src: './assets/scss',
-    dest: './assets/css',
+    src: path.join(__dirname, env.asset_path, 'scss'),
+    dest: path.join(__dirname, env.asset_path, 'css'),
     debug: false,
     outputStyle: 'extended',
     prefix: '/css'
@@ -27,7 +29,7 @@ app.use(cookieParser());
 
 app.use(expressLayouts);
 
-app.use(express.static('./assets'));
+app.use(express.static(env.asset_path));
 
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
@@ -37,7 +39,7 @@ app.set('views', './views');
 
 app.use(session({
     name : 'employee-review-system',
-    secret : 'something',
+    secret : env.session_cookie_key,
     saveUninitialized : false,
     resave : false,
     cookie : {
