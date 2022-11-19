@@ -1,0 +1,59 @@
+#main-container {
+  background-color: #f7f7f7;
+  color: black;
+  min-height: 100%;
+  margin-bottom: 10vh; }
+  #main-container #header {
+    width: 80%;
+    margin: auto;
+    padding: 20px 0px; }
+    #main-container #header span {
+      font-size: 24px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin-left: 40px; }
+    #main-container #header a {
+      text-decoration: none;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 10px 20px;
+      background-color: #f57f44;
+      margin-left: 50px;
+      border-radius: 5px; }
+      #main-container #header a:hover {
+        background-color: #f36e2c;
+        border: 1px solid #0a2541; }
+  #main-container #employees-list {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    overflow: auto; }
+    #main-container #employees-list table {
+      width: 80%;
+      border-collapse: collapse;
+      margin: auto; }
+      #main-container #employees-list table th, #main-container #employees-list table td {
+        padding: 10px 20px;
+        font-size: 14px;
+        text-align: center; }
+        #main-container #employees-list table th a, #main-container #employees-list table td a {
+          border: none;
+          padding: 7px 20px;
+          border-radius: 5px;
+          background-color: #f83636;
+          color: #e6e7e8;
+          text-decoration: none; }
+        #main-container #employees-list table th #edit, #main-container #employees-list table td #edit {
+          background-color: #45b405;
+          color: white; }
+        #main-container #employees-list table th #make-admin, #main-container #employees-list table td #make-admin {
+          background-color: dodgerblue;
+          color: white; }
+      #main-container #employees-list table tr:hover td {
+        color: white;
+        cursor: pointer;
+        background-color: #184e77; }
+      #main-container #employees-list table thead th {
+        position: sticky;
+        top: 0;
+        background-color: #0a2541;
+        color: #e6e7e8;
+        font-size: 15px; }
