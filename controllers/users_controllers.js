@@ -1,6 +1,7 @@
 const Admin = require('../models/admin');
 const Employee = require('../models/employee');
 
+// function to render sign in page
 module.exports.signIn = function(req, res){
     try{
         if(req.isAuthenticated()){
@@ -16,6 +17,7 @@ module.exports.signIn = function(req, res){
     }
 }
 
+// function to create-session (Sign In)
 module.exports.createSession = async function(req, res){
 
     try{
@@ -31,6 +33,7 @@ module.exports.createSession = async function(req, res){
     }
 }
 
+// function to destroy session (Sign Out)
 module.exports.destroySession = async function(req, res){
 
     try{
@@ -46,6 +49,7 @@ module.exports.destroySession = async function(req, res){
     } 
 }
 
+// function to render employee registration form
 module.exports.displayRegistrationForm = function(req, res){
 
     try{
@@ -62,6 +66,7 @@ module.exports.displayRegistrationForm = function(req, res){
     }
 }
 
+// function to register the employee and store employee details in database
 module.exports.register = async function(req, res){
 
     try{

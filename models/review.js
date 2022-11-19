@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// define reviewSchema
 const reviewSchema = new mongoose.Schema({
     from_employee: {
         type: mongoose.Schema.Types.ObjectId,
@@ -25,6 +26,8 @@ const reviewSchema = new mongoose.Schema({
     timestamps: true
 });
 
+// create review model to store reviews in database
 const Review = mongoose.model('Review', reviewSchema);
 
+// exported review model to be accessed by other files
 module.exports = Review;

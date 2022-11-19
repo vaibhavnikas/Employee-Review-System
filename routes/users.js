@@ -1,3 +1,4 @@
+// file containing routes for admin as well as employee
 const express = require('express');
 const passport = require('../config/passport-local-strategy');
 const router = express.Router();

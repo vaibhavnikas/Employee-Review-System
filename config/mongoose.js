@@ -1,3 +1,4 @@
+// moongose config to get the app connected with MongoDB
 const mongoose = require('mongoose');
 const env = require('./environment');
 

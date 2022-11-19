@@ -1,6 +1,7 @@
 const Employee = require('../models/employee');
 const Review = require('../models/review');
 
+// function to render employee view
 module.exports.displayEmployeeView = async function(req, res){
 
     try{
@@ -30,6 +31,7 @@ module.exports.displayEmployeeView = async function(req, res){
     }
 }
 
+// function to render update review form
 module.exports.displayUpdateReviewForm = async function(req, res){
 
     try{

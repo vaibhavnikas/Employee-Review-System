@@ -1,3 +1,4 @@
+// function to render home view for employee as well as admin
 module.exports.home = function(req, res){
 
     try{

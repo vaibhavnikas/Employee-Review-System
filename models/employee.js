@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// define employeeSchema
 const employeeSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -32,6 +33,8 @@ const employeeSchema = new mongoose.Schema({
     timestamps: true
 });
 
+// create employee model to store employee details in database
 const Employee = mongoose.model('Employee', employeeSchema);
 
+// exported employee model to be accessed by other files
 module.exports = Employee;

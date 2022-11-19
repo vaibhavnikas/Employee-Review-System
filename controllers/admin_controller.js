@@ -2,12 +2,14 @@ const Admin = require('../models/admin');
 const Employee = require('../models/employee');
 const Review = require('../models/review');
 
+// function to render admin view
 module.exports.home = function(req, res){
     return res.render('admin_view',{
         title: 'Home | Admin'
     });
 }
 
+// function to render manage employees page
 module.exports.manageEmployees = async function(req, res){
 
     try{
@@ -23,12 +25,14 @@ module.exports.manageEmployees = async function(req, res){
     }
 }
 
+// function to render add employee form 
 module.exports.displayAddEmployeeForm = function(req, res){
     return res.render('add_employee', {
         title: 'Add Employee | Admin'
     })
 }
 
+// function to add employee data to database coming from add employee form 
 module.exports.addEmployee = async function(req, res){
 
     try{
@@ -50,6 +54,7 @@ module.exports.addEmployee = async function(req, res){
     }
 }
 
+// function to delete employee from database
 module.exports.deleteEmployee = async function(req, res){
 
     try{
@@ -63,6 +68,7 @@ module.exports.deleteEmployee = async function(req, res){
     }
 }
 
+// function to render update employee form
 module.exports.displayUpdateEmployeeForm = async function(req, res){
 
     try{
@@ -78,6 +84,7 @@ module.exports.displayUpdateEmployeeForm = async function(req, res){
     }
 }
 
+// function to update employee details and save them into database
 module.exports.updateEmployeeDetails = async function(req, res){
 
     try{
@@ -91,6 +98,7 @@ module.exports.updateEmployeeDetails = async function(req, res){
     } 
 }
 
+// function to render manage review page
 module.exports.manageReviews = async function(req, res){
 
     try{
@@ -111,6 +119,7 @@ module.exports.manageReviews = async function(req, res){
     }
 }
 
+// function to assign review
 module.exports.assignReview = async function(req, res){
 
     try{
@@ -153,6 +162,7 @@ module.exports.assignReview = async function(req, res){
     }
 }
 
+// function to render update review form
 module.exports.displayUpdateReviewForm = async function(req, res){
 
     try{
@@ -171,6 +181,7 @@ module.exports.displayUpdateReviewForm = async function(req, res){
     }
 }
 
+// function to update review and save it to database
 module.exports.updateReview = async function(req, res){
 
     try{
@@ -197,6 +208,7 @@ module.exports.updateReview = async function(req, res){
     }
 }
 
+// function to make employee an admin
 module.exports.makeAdmin = async function(req, res){
 
     try{

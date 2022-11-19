@@ -1,4 +1,4 @@
-// file to import environment variables 
+// file to store all environment variables 
 
 const development = {
     name: 'development',
