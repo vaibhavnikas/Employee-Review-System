@@ -4,7 +4,7 @@ Employee-Review-System is a web application where employees of an organization c
 # Deployment Link
 My project is deployed on Heroku. Click on the link given below to checkout my project.
 
-[Visit Employee-Review-System](https://emp-review-system.herokuapp.com/)
+[Visit Employee-Review-System](https://employee-review-system-n3yw.onrender.com)
 
 # Technologies Used
 This project was built using the following technologies :
